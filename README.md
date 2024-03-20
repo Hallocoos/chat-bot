@@ -11,21 +11,23 @@ The first time you run the `make` command the init.sql and create.sql don't work
 Running `make` for a second time, fixes this issue.
 
 If you now send a POST request with the following inside the body:
+```json
+    {
+        "id": 1,
+        "userid": "1",
+        "conversationid": "1",
+        "optionpicked": "1",
+        "state": "1"
+    }
 ```
-{
-    "id": 1,
-    "userid": "1",
-    "conversationid": "1",
-    "optionpicked": "1",
-    "state": "1"
-}```
 
 You should get the following successfull response:
+```json
+    {
+        "status": "success",
+        "message": "Conversation data saved successfully"
+    }
 ```
-{
-    "status": "success",
-    "message": "Conversation data saved successfully"
-}```
 
 If you want to see the data in the DB:
  - Use `docker ps` to get the CONTAINER_ID
