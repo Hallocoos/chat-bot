@@ -12,21 +12,21 @@ Running `make` for a second time, fixes this issue.
 
 If you now send a POST request with the following inside the body:
 ```json
-    {
-        "id": 1,
-        "userid": "1",
-        "conversationid": "1",
-        "optionpicked": "1",
-        "state": "1"
-    }
+{
+    "id": 1,
+    "userid": "1",
+    "conversationid": "1",
+    "optionpicked": "1",
+    "state": "1"
+}
 ```
 
 You should get the following successfull response:
 ```json
-    {
-        "status": "success",
-        "message": "Conversation data saved successfully"
-    }
+{
+    "status": "success",
+    "message": "Conversation data saved successfully"
+}
 ```
 
 If you want to see the data in the DB:
@@ -34,13 +34,18 @@ If you want to see the data in the DB:
  - Run `docker exec -it <CONTAINER_ID> /bin/bash` to access the containers shell
  - `psql -U user -d chatbot` should give you access to the postgres console, having already selected `chatbot` as the database we want to use 
  - `SELECT * FROM myapp_conversation;` should be empty if you haven't sent a POST request and received the successfull response as seen above.
+ 
+```sql
         chatbot=# SELECT * FROM myapp_conversation;
         id | userid | conversationid | optionpicked | state 
         ----+--------+----------------+--------------+-------
         (0 rows)
+```
     OR
+```sql
         chatbot=# SELECT * FROM myapp_conversation;
         id | userid | conversationid | optionpicked | state 
         ----+--------+----------------+--------------+-------
         1 | 1      | 1              | 1            | state
         (1 row)
+```
