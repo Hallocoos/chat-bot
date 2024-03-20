@@ -35,6 +35,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: psf/black@stable
-        with:
-          paths: "myproject/ myapp/"
+      - name: Run Black Linter
+        run:
+          black myproject/*.py
