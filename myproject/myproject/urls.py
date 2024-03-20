@@ -20,8 +20,8 @@ from django.urls import path
 from myapp.views import get_chat_response, get_status
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('status/', get_status, name='api_status'),
-    path('', get_status, name='api_status'),
-    path('chat/', get_chat_response),
+    path("admin/", admin.site.urls),
+    path("status/", get_status, name="api_status"),
+    path("", get_status, name="api_status"),
+    path("chat/", get_chat_response),
 ]

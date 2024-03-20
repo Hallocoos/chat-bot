@@ -17,6 +17,7 @@ import json
 
 logger = logging.getLogger(__name__)
 
+
 @csrf_exempt
 def get_status(request):
     """
@@ -24,7 +25,8 @@ def get_status(request):
     """
     return JsonResponse({"status": "ok"})
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 def get_chat_response(request):
     """
     Endpoint to handle chat interactions.
@@ -35,19 +37,26 @@ def get_chat_response(request):
     #   createNewConversation();
     # else:
     #   findNextQuestion();
-    userid = data.get('userid')
-    conversationid = data.get('conversationid')
-    optionpicked = data.get('optionpicked')
-    state = data.get('state')
+    userid = data.get("userid")
+    conversationid = data.get("conversationid")
+    optionpicked = data.get("optionpicked")
+    state = data.get("state")
 
     try:
         data = json.loads(request.body)
-        userid = data.get('userid')
-        conversationid = data.get('conversationid')
-        optionpicked = data.get('optionpicked')
-        state = data.get('state')
+        userid = data.get("userid")
+        conversationid = data.get("conversationid")
+        optionpicked = data.get("optionpicked")
+        state = data.get("state")
 
-        conversation = Conversation.objects.create(userid=userid, conversationid=conversationid, optionpicked=optionpicked, state=state)
-        return JsonResponse({'status': 'success', 'message': 'Conversation data saved successfully'})
+        conversation = Conversation.objects.create(
+            userid=userid,
+            conversationid=conversationid,
+            optionpicked=optionpicked,
+            state=state,
+        )
+        return JsonResponse(
+            {"status": "success", "message": "Conversation data saved successfully"}
+        )
     except Exception as e:
-        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+        return JsonResponse({"status": "error", "message": str(e)}, status=500)
