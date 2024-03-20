@@ -36,16 +36,14 @@ If you want to see the data in the DB:
  - `SELECT * FROM myapp_conversation;` should be empty if you haven't sent a POST request and received the successfull response as seen above.
  
 ```sql
-        chatbot=# SELECT * FROM myapp_conversation;
-        id | userid | conversationid | optionpicked | state 
-        ----+--------+----------------+--------------+-------
-        (0 rows)
-```
-    OR
-```sql
-        chatbot=# SELECT * FROM myapp_conversation;
-        id | userid | conversationid | optionpicked | state 
-        ----+--------+----------------+--------------+-------
-        1 | 1      | 1              | 1            | state
-        (1 row)
+    chatbot=# SELECT * FROM myapp_conversation;
+    id | userid | conversationid | optionpicked | state 
+    ----+--------+----------------+--------------+-------
+    (0 rows)
+OR
+    chatbot=# SELECT * FROM myapp_conversation;
+    id | userid | conversationid | optionpicked | state 
+    ----+--------+----------------+--------------+-------
+    1 | 1      | 1              | 1            | state
+    (1 row)
 ```
