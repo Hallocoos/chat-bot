@@ -13,7 +13,9 @@ build:
 	docker-compose up --build
 
 up: build
-	docker-compose up
+	docker-compose up -a
 
 down:
 	docker-compose down
+
+fresh: down up

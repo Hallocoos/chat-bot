@@ -1,9 +1,25 @@
 version: '3'
 services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    environment:
+      POSTGRES_DB: chatbot
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.web
     command: python myproject/manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     volumes:
       - .:/app
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
